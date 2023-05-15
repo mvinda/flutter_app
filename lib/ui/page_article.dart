@@ -81,7 +81,6 @@ class _ArticlePageState extends State<ArticlePage> {
       banners.clear();
 
       data['data'].forEach((v) {
-        print("data "+v['imagePath']);
         var banner=BannerModel();
         banner.image=v['imagePath'];
         banner.link=v['url'];
