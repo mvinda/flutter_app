@@ -23,6 +23,7 @@ class Api {
   static const String COLLECT = "lg/collect/list/";
 
   static getArticleList(int page) async {
+    var response=  await HttpManager.getInstance().cookieJar.loadForRequest(Uri.parse(baseUrl));
     return HttpManager.getInstance().request('$ARTICLE_LIST$page/json');
   }
 
@@ -35,12 +36,8 @@ class Api {
   }
 
   static login(String username, String password) async {
-    print("username$username");
-    print("password$password");
-
     var response = await HttpManager.getInstance().getDio().post(LOGIN,
         queryParameters: {'username': username, 'password': password});
-    print(response);
     return response;
   }
 

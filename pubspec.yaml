@@ -46,6 +46,8 @@ dev_dependencies:
   event_bus: ^2.0.0
   shared_preferences: ^2.1.1
   toast: ^0.2.9
+  dio_cookie_manager: ^2.0.0 # latest version
+
 
 
   #  banner_view: ^1.1.2

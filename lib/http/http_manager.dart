@@ -1,9 +1,13 @@
 import 'package:dio/dio.dart';
 import 'api.dart';
+import 'package:cookie_jar/cookie_jar.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 
 class HttpManager {
   late Dio _dio;
   static HttpManager? _instance;
+  final cookieJar = CookieJar();
+
 
   factory HttpManager.getInstance() {
     if (null == _instance) {
@@ -20,6 +24,7 @@ class HttpManager {
       receiveTimeout: const Duration(seconds: 3), //读取超时
     );
     _dio = Dio(options);
+    initDio();
   }
 
   request(url, {data, String method = "get"}) async {
@@ -38,11 +43,15 @@ class HttpManager {
     return _dio;
   }
 
-  post(url,postData) async {
-    return await _dio.post(url, data:postData);
+  post(url, postData) async {
+    return await _dio.post(url, data: postData);
   }
 
   void clearCookie() {
-    // _persistCookieJar.deleteAll();
+    cookieJar.deleteAll();
+  }
+
+  void initDio() {
+    _dio.interceptors.add(CookieManager(cookieJar));
   }
 }

@@ -65,6 +65,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.17.0"
+  cookie_jar:
+    dependency: transitive
+    description:
+      name: cookie_jar
+      sha256: d1cc6516a190ba667941f722b6365d202caff3dacb38de24268b8d6ff1ec8a1d
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.1"
   crypto:
     dependency: transitive
     description:
@@ -97,6 +105,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "5.1.2"
+  dio_cookie_manager:
+    dependency: "direct dev"
+    description:
+      name: dio_cookie_manager
+      sha256: b45f11c2fcbccf39c5952ab68910b3a155486c4fa730ceb4ce867c4943169ea1
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.1.4"
   event_bus:
     dependency: "direct dev"
     description:
