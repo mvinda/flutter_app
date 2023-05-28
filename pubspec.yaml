@@ -47,6 +47,9 @@ dev_dependencies:
   shared_preferences: ^2.1.1
   toast: ^0.2.9
   dio_cookie_manager: ^2.0.0 # latest version
+  flutter_slidable: "^3.0.0"
+  flutter_webview_plugin: ^0.4.0
+
 
 
 

@@ -11,7 +11,7 @@ class MainPage extends StatelessWidget {
       body: FloatingActionButton(
         onPressed: () {
 
-          Navigator.pushNamed(context, "p age2");
+          Navigator.pushNamed(context, "page2");
         },
         child: const Text("跳转到第二个界面"),
       ),

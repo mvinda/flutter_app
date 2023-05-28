@@ -22,8 +22,16 @@ class Api {
   //收藏
   static const String COLLECT = "lg/collect/list/";
 
+  static const String COLLECT_ARTICLE_LIST = "lg/collect/list/";
+  static const String COLLECT_WEBSITE_LIST = "lg/collect/usertools/json";
+
+  static const String UNCOLLECT_INTERNAL_ARTICLE = "lg/uncollect_originId/";
+
+  static const String COLLECT_INTERNAL_ARTICLE = "lg/collect/";
+
+  static const String COLLECT_WEBSITE = "lg/collect/addtool/json";
+
   static getArticleList(int page) async {
-    var response=  await HttpManager.getInstance().cookieJar.loadForRequest(Uri.parse(baseUrl));
     return HttpManager.getInstance().request('$ARTICLE_LIST$page/json');
   }
 
@@ -44,16 +52,54 @@ class Api {
   static register(String username, String password) async {
     ///必须使用form表单提交
 
-    var response = await HttpManager.getInstance().getDio().post(REGISTER, queryParameters: {
-        "username": username,
-        "password": password,
-        "repassword": password
-      });
+    var response = await HttpManager.getInstance().getDio().post(REGISTER,
+        queryParameters: {
+          "username": username,
+          "password": password,
+          "repassword": password
+        });
     print(response);
     return response;
   }
 
   static getCollects(int page) async {
     return await HttpManager.getInstance().request("$COLLECT/$page/json");
+  }
+
+  static getWebSiteCollects() async {
+    return await HttpManager.getInstance().request(COLLECT_WEBSITE_LIST);
+  }
+
+  static getArticleCollects(int page) async {
+    return await HttpManager.getInstance()
+        .request("$COLLECT_ARTICLE_LIST/$page/json");
+  }
+
+  static unCollectWebsite(int id) async {
+    var response = await HttpManager.getInstance()
+        .getDio()
+        .post(REGISTER, queryParameters: {"id": id});
+    return response;
+  }
+
+  static unCollectArticle(int id) async {
+    return await HttpManager.getInstance()
+        .getDio()
+        .post("$UNCOLLECT_INTERNAL_ARTICLE$id/json", queryParameters: {});
+  }
+
+  static collectArticle(int id) async {
+    return await HttpManager.getInstance()
+        .getDio()
+        .post("$COLLECT_INTERNAL_ARTICLE$id/json", queryParameters: {});
+  }
+
+  static collectWebsite(String name, String link) async {
+    return await HttpManager.getInstance()
+        .getDio()
+        .post(COLLECT_WEBSITE, queryParameters: {
+      "name": name,
+      "link": link,
+    });
   }
 }

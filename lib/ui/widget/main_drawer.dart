@@ -2,7 +2,7 @@ import 'package:app/event/events.dart';
 import 'package:app/http/api.dart';
 import 'package:app/manager/app_manager.dart';
 import 'package:app/ui/page/page_login.dart';
-import 'package:app/ui/widget/page_conllect.dart';
+import 'package:app/ui/page/page_conllect.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatefulWidget {
@@ -17,7 +17,6 @@ class _MainDrawerState extends State<MainDrawer> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     AppManager.eventBus.on<LoginEvent>().listen((event) {

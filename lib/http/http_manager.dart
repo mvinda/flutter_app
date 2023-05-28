@@ -10,9 +10,7 @@ class HttpManager {
 
 
   factory HttpManager.getInstance() {
-    if (null == _instance) {
-      _instance = new HttpManager._internal();
-    }
+    _instance ??= new HttpManager._internal();
     return _instance!;
   }
 
@@ -31,8 +29,6 @@ class HttpManager {
     try {
       Options option = Options(method: method);
       Response response = await _dio.request(url, data: data, options: option);
-      print(response.headers);
-      print(response.data);
       return response.data;
     } catch (e) {
       return null;
